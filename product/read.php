@@ -11,9 +11,8 @@ $db = $database->getConnection();
 $product = new Product($db);
 
 $stmt = $product->read();
-$num = $stmt->rowCount();
 
-if($num>0){
+if($stmt->rowCount() > 0){
 
 	$products_arr = array();
 	$products_arr["records"] = array();
@@ -32,7 +31,6 @@ if($num>0){
 	}
 	echo json_encode($products_arr, JSON_PRETTY_PRINT);
 }
-
 else{
 	echo json_encode(
 		array("message" => "No products found.")
