@@ -38,7 +38,7 @@ if($stmt->rowCount() > 0){
     }
 
     $total_rows = $product->totalCount();
-    $page_url = "{$home_url}product/read_paging.php?";
+    $page_url = "{$home_url}/api/product/read_paging.php?";
     $paging = $utilities->getPaging($page, $total_rows, $records_per_page, $page_url);
     $products_arr["paging"] = $paging;
 
