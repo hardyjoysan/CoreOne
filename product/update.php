@@ -10,21 +10,22 @@ include_once '../objects/product.php';
 
 $database = new Database();
 $db = $database->getConnection();
-
+ 
 $product = new Product($db);
+
 $data = json_decode(file_get_contents("php://input"));
+
+$product->id = $data->id;
 
 $product->name = $data->name;
 $product->price = $data->price;
 $product->description = $data->description;
 $product->category_id = $data->category_id;
-$product->created = date('Y-m-d H:i:s');
 
-if($product->create()){
-	echo '{ "message": "Product was created." }';
-}
-else{
-	echo '{ "message": "Unable to create product." }';
+if($product->update()){
+	echo '{ "message": "Product was updated." }';
+}else{
+	echo '{ "message": "Unable to update product." }';
 }
 
 ?>
